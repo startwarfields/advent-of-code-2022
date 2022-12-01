@@ -19,7 +19,7 @@ def generate_random_numpy_array(size):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog = "Day 1 Advent of Code 2022: Challenge",
                                     description = "Extend the first day of Advent of Code 2022 with MIPS Scale Elves" )
-    parser.add_argument('-n', '--num_elves', help = 'Number of elves', required = False, default = 1_000_000)
+    parser.add_argument('-n', '--num_elves', help = 'Number of elves', required = False, default = 10_000_000)
 
     args = parser.parse_args()
     generate_input_dataset(args.num_elves)

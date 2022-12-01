@@ -1,5 +1,7 @@
 import argparse
 import time
+import numpy as np
+
 def get_max_calorie_elf(elf_list):
     current_elf = 0
     elves = dict()
