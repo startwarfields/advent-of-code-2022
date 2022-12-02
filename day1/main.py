@@ -33,7 +33,7 @@ def main(args):
     print("The smallest elf is {}".format(max_calories[-1]))
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(prog = "Day 1 Advent of Code 2022",
+    parser = argparse.ArgumentParser(prog = "Day 4 Advent of Code 2022",
                                     description = "Solve the first day of Advent of Code 2022"
                                      )
 
