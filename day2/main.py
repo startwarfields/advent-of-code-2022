@@ -6,10 +6,6 @@ strategy = [1, -1, 0]
 # Scissors is C or Z
 equivalent_moves = {'A': ['X'], 'B': ['Y'], 'C': ['Z'], 'X': ['A'], 'Y': ['B'], 'Z': ['C']}
 
-Option_A = ['A', 'B', 'C']
-Option_B = ['X', 'Y', 'Z']
-values =   [1, 2, 3]
-
 
 moves = {
     'X': 1,
@@ -23,37 +19,24 @@ moves = {
 
 total_score = 0 
 
-def main(args):
-    move_list = open(args.input, 'r')
-    total_score = 0
-    game_score = 0
-    current_move = 0
-    for line in move_list:
-        move_1 = line[0]
-        move_2 = line[2]
-        print(line[2])
-        print(determine_outcome(move_1, move_2))
-        print(moves[move_2])
-        # total_score += determine_outcome(move_1, move_2) + moves[move_2]
-        total_score += determine_alternate(move_1, move_2)
-    print(total_score)
-
-
 def determine_outcome(move_1, move_2):
     if equivalent_moves[move_1][0] == move_2:
         return 3
+    # Loses
     elif move_1 == 'A' and move_2 == 'Z':
         return 0
-    elif move_1 == 'A' and move_2 == 'Y':
-        return 6
+    elif move_1 == 'C' and move_2 == 'Y':
+        return 0
     elif move_1 == 'B' and move_2 == 'X':
         return 0
+    # Wins
     elif move_1 == 'B' and move_2 == 'Z':
         return 6
     elif move_1 == 'C' and move_2 == 'X':
         return 6
-    elif move_1 == 'C' and move_2 == 'Y':
-        return 0
+    elif move_1 == 'A' and move_2 == 'Y':
+        return 6
+   
 
 
 win_dict = {
@@ -68,6 +51,8 @@ lose_dict = {
      }
 
 
+
+
 def determine_alternate(move_1, move_2):
     if move_2 == 'Z':
         return moves[lose_dict[move_1]] + 6
@@ -77,7 +62,17 @@ def determine_alternate(move_1, move_2):
         return moves[win_dict[move_1]] + 0
   # lose
 
-    
+def main(args):
+    move_list = open(args.input, 'r')
+    total_score = 0
+    game_score = 0
+    current_move = 0
+    for line in move_list:
+        move_1 = line[0]
+        move_2 = line[2]
+        total_score += determine_outcome(move_1, move_2) + moves[move_2]
+        # total_score += determine_alternate(move_1, move_2)
+    print(total_score) 
 
 
 
