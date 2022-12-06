@@ -17,8 +17,6 @@ def main(args):
         if 'move' in line:
             # stack_dict = parse_moves(line, stack_dict)
             stack_dict = parse_alternate_moves(line, stack_dict)
-         
-
     print(stack_dict)
     # loop through keys in dictionary in order
     result_string = ''
@@ -46,8 +44,6 @@ def parse_current_crates(line, stack_dict):
             stack_dict[current_stack].insert(0,line[idx])
     return stack_dict
 
-
-
 def parse_moves(line, stack_dict):
     # Parse the line into a list of integers
     # move 1 from 2 to 1
@@ -66,16 +62,15 @@ def parse_moves(line, stack_dict):
     while number_of_moves > 0:
         # Remove first element from source stack
         # and add it to the destination stack
-        
         stack_dict[dest_stack].append(stack_dict[source_stack].pop())
         number_of_moves-=1
         print(stack_dict)
     return stack_dict
 
 def parse_alternate_moves(line, stack_dict):
-    # Parse the line into a list of integers
-    # move 1 from 2 to 1
-    # means move the crate on stack 2 to stack 1
+    # Parse the line into a list of integer
+    # move 1 from 2 to 
+    # means move the crate on stack 2 to stack 
     line = line.split(' ')
     print(line)
     number_of_moves = int(line[1])
@@ -86,19 +81,12 @@ def parse_alternate_moves(line, stack_dict):
         line[5] = line[5][:-1]
     dest_stack = int(line[5])
     # Get index of target in source stack
-    
-   
-        # Remove last n elements from source stack
-
     list_to_move = stack_dict[source_stack][-number_of_moves:]
     stack_dict[source_stack] = stack_dict[source_stack][:-number_of_moves]
     old_dest_stack = stack_dict[dest_stack]
     stack_dict[dest_stack] =  old_dest_stack + list_to_move
     number_of_moves-=1
     return stack_dict
-
-
-
 
 
 if __name__ == "__main__":
