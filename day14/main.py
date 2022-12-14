@@ -124,7 +124,7 @@ def add_sand_to_grid(grid):
                 while(True):
                     # Check if grid needs to be extended
                     if grid[0][500] == 'O':
-                        break
+                        return[grid, 2]
 
                     if sand_x+1 not in grid:
                         grid[sand_x+1] = dict()
